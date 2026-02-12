@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="video-responsive.css">
+  <title>FX Avatar</title>
+</head>
+
+
+
+
+
+<body>
+  <div class="page-container">
+    <h1>FX Network</h1>
+    <h2>Avatar</h2>
+
+
+    <main class="wrap">
+      <div class="structure-grid">
+        <div class="video-container">
+          <video id="myVideo" class="videosize" controls autoplay muted preload="metadata" playsinline
+            poster="assets/poster.jpg">
+            <source
+              src="https://dl.dropboxusercontent.com/scl/fi/3n8aw6l2wpjhsfbbox92g/AVATAR_30_FINAL.mov?rlkey=drid08un2nenclf5yajoutwl6&e=1&st=v6ah6xc3&dl=0" />
+            Sorry — your browser can’t play this video.
+          </video>
+          <script>
+            const video = document.getElementById('myVideo');
+
+            // Set volume to 15% (0.15)
+            video.volume = 0.15;
+
+            // Pause immediately after load
+            video.addEventListener('loadedmetadata', () => {
+              video.pause();
+            });
+            video.addEventListener('click', () => {
+              try {
+                if (video.paused) {
+                  // Play and unmute
+                  video.muted = false;
+                  video.play().catch(err => {
+                    console.error("Playback failed:", err);
+                  });
+                } else {
+                  // Pause video
+                  video.pause();
+                }
+              } catch (err) {
+                console.error("Error handling video click:", err);
+              }
+            });
+          </script>
+          
+          <a href="../index.html">Click to go back to main menu.</a>
+
+        </div>
+
+
+        <div class="technology">
+          <h3> Technology Used:</h3>
+          <ul>
+            <li>Avid Media Composer (Offline)</li>
+            <li>AVID Nitris DS (Finishing)</li>
+            <li>Adobe After Effects</li>
+          </ul>
+        </div>
+        <div class="nameblock">
+          <div class="namecard">
+            <a href="../index.html">Click to go back to main menu.</a>
+          </div>
+          <div class="emailcard">
+            <p style="color: rgb(173, 151, 151); font-size: 1.4rem;">Don't forget to turn up the volume.</p>
+          </div>
+        </div>
+
+        <!-- <div class="meta">
+      <span>MP4 • Click Slate to Play</span>
+      <a href="animatedLogo.html"></a>
+    </div> -->
+    </main>
+  </div>
+
+</body>
+
+</html> <!-- <div class="meta">
+      <span>MP4 • Click Slate to Play</span>
+      <a href="animatedLogo.html"></a>
+    </div> -->
+</main>
+
+</div>
+<script src="../script.js"></script>
+</body>
+
+</html>

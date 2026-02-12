@@ -1,0 +1,187 @@
+/* Responsive Video Page Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: rgb(36, 26, 26);
+  overflow-x: hidden;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  margin: clamp(20px, 5vh, 40px) 16px 0;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  margin: 0 16px clamp(30px, 8vh, 60px);
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+}
+
+/* Main Layout - Responsive Grid */
+.structure-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+}
+
+/* Desktop: side-by-side layout */
+@media (min-width: 900px) {
+  .structure-grid {
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    padding: 0 32px 80px;
+  }
+}
+
+/* Video Container - Fully Responsive */
+.video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border: 3px solid rgb(172, 147, 147);
+  padding: clamp(16px, 3vw, 30px);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+video {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  background: #000;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.video-container a {
+  color: rgb(81, 143, 172);
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  text-decoration: none;
+  padding: 12px 20px;
+  border: 1px solid rgb(81, 143, 172);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.video-container a:hover,
+.video-container a:active {
+  background: rgb(81, 143, 172);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Technology Section - Responsive */
+.technology {
+  color: rgb(172, 147, 147);
+  border: 3px solid rgb(172, 147, 147);
+  padding: 20px clamp(20px, 4vw, 40px);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.technology h3 {
+  margin-top: 0;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+}
+
+.technology ul {
+  padding-left: 24px;
+  margin: 0;
+}
+
+.technology li {
+  margin: 12px 0;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  line-height: 1.6;
+}
+
+/* Bottom Info Block - Responsive */
+.nameblock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border: 2px solid rgb(172, 147, 147);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  box-sizing: border-box;
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 640px) {
+  .nameblock {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.namecard a {
+  color: rgb(81, 143, 172);
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 1px solid rgb(81, 143, 172);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  min-height: 44px;
+  line-height: 1.5;
+}
+
+.namecard a:hover,
+.namecard a:active {
+  background: rgb(81, 143, 172);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.emailcard p {
+  color: rgb(173, 151, 151);
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  margin: 0;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .emailcard p {
+    text-align: right;
+  }
+}
+
+/* Hide old fixed-width classes */
+.videosize {
+  width: 100% !important;
+  max-width: 900px;
+  height: auto !important;
+}
+
+/* Ensure page container uses full width properly */
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}

@@ -1,0 +1,168 @@
+<!-- NOTE - curtains do not close DO NOT PUSH -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kevin's Video Editing Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section id="screening" class="screening theater">
+      <div class="curtains">
+        <div class="curtain left"></div>
+        <div class="curtain right"></div>
+      </div>
+
+
+
+      <div class="overlay">
+        <h1 class="menu-title">Video Editing Portfolio</h1>
+        <h3 class="subtitle">Promos | Visual Effects | Editing | Audio Sweetening</h3>
+
+        <div class="menu-plate">
+          <div class="column-container">
+            <div class="menu-col">
+              <ul>
+                <li class="category-label">Promos</li>
+                <li><a href="videos/drivethru.html">DriveThru</a></li>
+                <li><a href="videos/avatar.html">Avatar :30</a></li>
+                <li><a href="videos/fxcontraband.html">Contraband</a></li>
+              </ul>
+            </div>
+
+            <div class="menu-col">
+              <ul>
+                <li class="category-label">Promos</li>
+                <li><a href="videos/compassion.html">Compassion</a></li>
+                <li><a href="videos/justify.html">Justify :90</a></li>
+              </ul>
+            </div>
+
+            <div class="menu-col">
+              <ul>
+                <li class="category-label">Network Promotion</li>
+                <li><a href="videos/fxupfront.html">FX Upfront</a></li>
+
+                <li class="category-label">Television</li>
+                <li><a href="videos/porkchop.html">Pork Chop</a></li>
+                <li><a href="videos/tacos.html">Tacos</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="credits" class="credits">
+      <div class="credits-inner">
+        <h1 class="credits-title">Kevin Wagner</h1>
+        <p class="credits-subtitle">Video Editing & Post Production</p>
+
+        <div id="creditsGrid" class="credits-grid">
+          <a class="credits-card" href="mailto:kwagner.2025@outlook.com">
+            <span class="label">Email</span>
+            <span class="value">kwagner.2025@outlook.com</span>
+          </a>
+
+          <a class="credits-card" href="https://kevin-wagner.org" target="_blank" rel="noopener">
+            <span class="label">Website</span>
+            <span class="value">kevin-wagner.org</span>
+          </a>
+
+          <a
+            class="credits-card"
+            href="https://www.linkedin.com/in/kev613"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="label">LinkedIn</span>
+            <span class="value">/in/kev613</span>
+          </a>
+
+          <div class="credits-card muted">
+            <span class="label">Availability</span>
+            <span class="value">Select projects • Remote-friendly</span>
+          </div>
+        </div>
+
+        <button id="backToScreening" class="credits-back" type="button">
+          Back to Screening
+        </button>
+      </div>
+    </section>
+
+    <button id="contactBtn" class="contact-btn" type="button" aria-label="Contact and credits">
+      Contact / Credits
+    </button>
+
+    <script>
+      window.addEventListener("load", () => {
+        const screening = document.getElementById("screening");
+        if (!screening) return;
+        screening.scrollIntoView({ behavior: "auto", block: "start" });
+        setTimeout(() => {
+          screening.classList.add("open");
+        }, 50);
+      });
+
+      (() => {
+        const contactBtn = document.getElementById("contactBtn");
+        const backBtn = document.getElementById("backToScreening");
+        const credits = document.getElementById("credits");
+        const screening = document.getElementById("screening");
+
+        if (!contactBtn || !backBtn || !credits || !screening) return;
+
+        const CLOSE_DELAY_MS = 1200;
+        const OPEN_DELAY_MS = 200;
+        let isTransitioning = false;
+        let isOnCredits = false;
+
+        const closeThenGo = (targetEl, nextOnCredits) => {
+          if (isTransitioning) return;
+          isTransitioning = true;
+          screening.classList.add("closed");
+
+          setTimeout(() => {
+            const top = targetEl.offsetTop;
+            window.scrollTo({ top, behavior: "auto" });
+            setTimeout(() => {
+              screening.classList.remove("closed");
+              isTransitioning = false;
+              if (typeof nextOnCredits === "boolean") {
+                isOnCredits = nextOnCredits;
+              }
+            }, OPEN_DELAY_MS);
+          }, CLOSE_DELAY_MS);
+        };
+
+        contactBtn.addEventListener("click", () => {
+          if (isOnCredits) {
+            closeThenGo(screening, false);
+          } else {
+            closeThenGo(credits, true);
+          }
+        });
+
+        backBtn.addEventListener("click", () => {
+          closeThenGo(screening, false);
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeThenGo(screening, false);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
