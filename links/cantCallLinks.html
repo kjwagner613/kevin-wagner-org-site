@@ -4,14 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KJW Links</title>
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>Shared-Semi-Protected Content</title>
+    <script>
+        const SESSION_KEY = "links_access_granted";
+
+        // If they didn't come through the gate, bounce them back
+        if (sessionStorage.getItem(SESSION_KEY) !== "1") {
+            window.location.replace("index.html");
+        }
+    </script>
+
     <link rel="stylesheet" href="../style.css">
-  <style>
-    body {
-        padding-left: 25vw;
-        padding-top: 10rem;
-    }
-  </style>
+    <style>
+        body {
+            padding-left: 25vw;
+            padding-top: 10rem;
+        }
+    </style>
 </head>
 
 
@@ -24,18 +34,26 @@
                 </li>
                 <li><a href="https://portfolio-craftsman.netlify.app/" target="_blank">Craftsman Portfolio</a></li>
                 <li><a href="/videoPortfolio/index.html" target="_blank">Video Portfolio</a></li>
-                <li><a href="resume/coverLetter/index.html" target="_blank">Standard Cover Letter</a></li>
-                <li><a href="resume/index.html" target="_blank">Full Resume</a></li>
+                <li><a href="../resume/coverLetter/index.html" target="_blank">Standard Cover Letter</a></li>
+                <li><a href="../resume/index.html" target="_blank">Full Resume</a></li>
             </ul>
         </div>
 
     </div>
-    <div class="card-grid">
-    <div class="card" style="max-width:fit-content; margin-top: 2rem;">
+    <!-- <div class="card-grid">
+    <div class="card" style="max-width:fit-content; ">
         <h2>Return to Home</h2>
-      <a href="../index.html" class="card-link"></a>
+      <a href="../index.html" class="card-home-link"></a>
     </div>
-    
+    </div>   -->
+
+    <!-- <a href="../index.html" class="button">Return to Home</a> -->
+
+    <a href="../index.html" class="button" onclick="sessionStorage.removeItem('links_access_granted')">
+        Return to Home
+    </a>
+
+
 </body>
 
 </html>

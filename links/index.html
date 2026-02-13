@@ -1,15 +1,20 @@
+<!-- links/index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive">
   <title>Protected Entry</title>
+
   <style>
     body {
       font-family: sans-serif;
       padding: 40px;
       display: flex;
       flex-direction: column;
+      gap: 12px;
       top: 22vh;
       left: 5vw;
       height: 100vh;
@@ -20,7 +25,6 @@
       background-size: 100% 100%;
       position: relative;
       overflow: hidden;
-            
     }
 
     #pw {
@@ -33,11 +37,18 @@
     }
 
     #pw:focus {
-      outline: 3px solid red;
-      border-color: 3px solid red;
+      outline: 3px solid rgba(255, 0, 0, 0.35);
+      border-color: #7e0808;
     }
 
-    body > button {
+    .row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    button {
       padding: 10px 15px;
       font-size: 16px;
       background-color: #7e0808;
@@ -48,28 +59,81 @@
       width: 100px;
     }
 
-
+    .hint {
+      font-size: 13px;
+      opacity: 0.85;
+      max-width: 60ch;
+      line-height: 1.4;
+      margin: 0;
+    }
   </style>
 </head>
 
 <body>
-
   <h2>Password Required</h2>
-  <input id="pw" type="password" placeholder="Enter password">
-  <button onclick="check()">Submit</button>
+  <p class="hint">Simple guardrail. Enter the shared password to continue.</p>
+
+  <div class="row">
+    <input id="pw" type="password" placeholder="Enter password" autocomplete="current-password" />
+    <button id="submitBtn" type="button">Submit</button>
+  </div>
 
   <script>
-    function check() {
-      const input = document.getElementById('pw').value;
-      const correct = "kjw13KJW!"; // change this
-      if (input === correct) {
-        window.location.href = "cantCallLinks.html"; // your real page
+    const DEST = "cantCallLinks.html";
+    const SESSION_KEY = "links_access_granted";
+
+    // If already granted in this tab, skip the prompt
+    if (sessionStorage.getItem(SESSION_KEY) === "1") {
+      window.location.replace(DEST);
+    }
+
+    // Put your allowed password hashes here (SHA-256 hex, 64 chars each).
+    // Generate them with the helper snippet below (in browser console).
+    const ALLOWED_HASHES = new Set([
+      "705762eababc5bdfaf8e6722c29a1e20cb8a641645649d62167b48fc2d645702",
+      "d5591e1cc44953fb2f6b4020fe673b437282bab92b270380189af082b0c0fd7f"
+    ]);
+
+    async function sha256Hex(text) {
+      const enc = new TextEncoder().encode(text);
+      const buf = await crypto.subtle.digest("SHA-256", enc);
+      return [...new Uint8Array(buf)]
+        .map(b => b.toString(16).padStart(2, "0"))
+        .join("");
+    }
+
+    async function check() {
+      const inputEl = document.getElementById("pw");
+      const raw = inputEl.value;
+
+      if (!raw) {
+        alert("Enter a password.");
+        inputEl.focus();
+        return;
+      }
+
+      const pw = raw.trim();
+      const hash = await sha256Hex(pw);
+
+      if (ALLOWED_HASHES.has(hash)) {
+        sessionStorage.setItem(SESSION_KEY, "1");
+        window.location.href = DEST;
       } else {
         alert("Incorrect password");
+        inputEl.value = "";
+        inputEl.focus();
       }
     }
-  </script>
 
+    document.getElementById("submitBtn").addEventListener("click", check);
+    document.getElementById("pw").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") check();
+    });
+
+    // ---- Helper: run this in DevTools Console to get a hash ----
+    // (paste, then run: await pwHash("YourPasswordHere"))
+    // async function pwHash(pw){ return await sha256Hex(pw); }
+  </script>
 </body>
 
 </html>

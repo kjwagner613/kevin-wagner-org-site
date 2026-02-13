@@ -225,6 +225,34 @@ a {
   text-decoration: underline;
 }
 
+.card-home-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--accent);
+  font-weight: 200;
+  text-decoration: none;
+
+}
+
+.card-home-link:hover {
+  text-decoration: underline;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--accent);
+  font-weight: 200;
+  text-decoration: none;
+  border: 3px solid #cac0c0;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)  ;
+}
+
+
+
 .footer-note {
   margin-top: 1.75rem;
   text-align: center;
