@@ -61,6 +61,24 @@ body {
     padding: 22px;
     box-shadow: 0 8px 26px rgba(0, 0, 0, .08);
 }
+.listComment {
+    list-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    color: red;
+    margin-top: 4px;
+}
+
+.nonum {
+    list-style: none;
+    font-size: 20px;
+    /* padding-left: 0; */
+    margin-left: -15px; 
+    font-weight: bold;
+    font-style: italic;
+     /* color: red;     */
+}
 
 h1 {
     margin: 0 0 10px;
