@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results of my study</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      line-height: 1.65;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    h1 {
+      margin: 0 0 1rem;
+      font-size: 1.8rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      margin: 1.75rem 0 0.5rem;
+      font-size: 1.2rem;
+      line-height: 1.3;
+      color: #111827;
+      border-top: 2px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    h3 {
+      margin: 1rem 0 0.35rem;
+      font-size: 1rem;
+      color: #111827;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+
+    ul,
+    ol {
+      margin: 0.4rem 0 0.9rem 1.2rem;
+      padding: 0;
+    }
+
+    li {
+      margin: 0.2rem 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .toc {
+      position: sticky;
+      top: 0.75rem;
+      z-index: 5;
+      background: #ffffffed;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.7rem 0.85rem;
+      margin: 0 0 1rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .toc-title {
+      margin: 0 0 0.45rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .toc-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.7rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.92rem;
+    }
+
+    .toc a {
+      color: #1f2937;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .toc a:hover {
+      border-bottom-color: #9ca3af;
+    }
+
+    .sec-overview {
+      border-top-color: #93c5fd;
+      color: #1d4ed8;
+    }
+
+    .sec-motions {
+      border-top-color: #86efac;
+      color: #15803d;
+    }
+
+    .sec-critical {
+      border-top-color: #fdba74;
+      color: #b45309;
+    }
+
+    .sec-summary {
+      border-top-color: #c4b5fd;
+      color: #6d28d9;
+    }
+
+    .sec-reasoning {
+      border-top-color: #fda4af;
+      color: #be123c;
+    }
+
+    .sec-breakdown {
+      border-top-color: #67e8f9;
+      color: #0e7490;
+    }
+
+    .note {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin: 0.75rem 0;
+    }
+
+    @media (max-width: 640px) {
+      .content {
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 10px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+<main class="content">
+  <h1>Results of My Study</h1>
+  <p class="lead">Organized summary of case issues, evidentiary gaps, and motions to discuss with counsel.</p>
+
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc-title">Quick Navigation</p>
+    <ul class="toc-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#motions">Motions</a></li>
+      <li><a href="#critical">Critical Points</a></li>
+      <li><a href="#summary">Issues Summary</a></li>
+      <li><a href="#reasoning">Reasoning</a></li>
+      <li><a href="#breakdown">Additional Breakdown</a></li>
+    </ul>
+  </nav>
+
+  <h2 id="overview" class="sec-overview">Overview</h2>
+  <p><strong>Domestic Violence Classification (Threshold Issue)</strong></p>
+  <p>Both charges depend on proving the complainant is a “family or household member” under ORS 135.230.</p>
+  <p>The uploaded documents state:</p>
+  <ul>
+    <li>No romantic or sexual relationship</li>
+    <li>No shared finances or responsibilities</li>
+    <li>Separate beds</li>
+    <li>Temporary guest status</li>
+    <li>She is engaged to someone else</li>
+    <li>No shared child</li>
+  </ul>
+  <p>Under Oregon law, “cohabitation” requires a marriage-like relationship, not simply residing under the same roof.</p>
+  <p>If this element fails, the DV designation fails, and Count 1 loses its felony enhancement.</p>
+  <ul>
+    <li>No photos</li>
+    <li>No medical exam</li>
+    <li>No visible injuries documented</li>
+  </ul>
+  <p>This is significant in a strangulation case, where officers are trained to document injuries and encourage medical evaluation.</p>
+  <ul>
+    <li>Result: demand full discovery</li>
+    <li>Examine whether officers followed protocol</li>
+    <li>Assess credibility issues arising from intoxication and recantation</li>
+  </ul>
+
+  <h2 id="motions" class="sec-motions">Motions to Consider</h2>
+  <ul>
+    <li>Motion to dismiss DV enhancement (failure to meet ORS 135.230)</li>
+    <li>Motion to reduce Count 1 (no aggravator = misdemeanor)</li>
+    <li>Motion for judgment of acquittal on Count 2 (failure of statutory elements)</li>
+    <li>Motion to compel missing evidence (bodycam, 911, medical, statements)</li>
+  </ul>
+
+  <h2 id="critical" class="sec-critical">Critical Points</h2>
+  <ul>
+    <li>Felony enhancement may be unsupported</li>
+    <li>DV classification is questionable</li>
+    <li>Menacing elements appear unmet</li>
+    <li>Strangulation lacks corroboration</li>
+    <li>Complainant intoxicated and recanting</li>
+    <li>No medical or photographic evidence</li>
+  </ul>
+
+  <h2 id="summary" class="sec-summary">Summary of Issues to Develop</h2>
+  <p>Whether the State can prove a qualifying “family or household member” relationship under ORS 135.230.</p>
+  <ol>
+    <li>Whether Count 1 qualifies as a felony under ORS 163.187(4), and if not, whether it must be reduced.</li>
+    <li>Whether the elements of menacing (intent, imminence, substantial step) are met.</li>
+    <li>Whether the DV designation is legally supportable under ORS 132.586.</li>
+    <li>Whether the evidence supports “impeding breathing” as required for strangulation.</li>
+    <li>Whether bodycam, 911 audio, medical records, and witness statements contradict the indictment.</li>
+    <li>Whether motions to dismiss, reduce, or exclude evidence are appropriate.</li>
+    <li>Whether the State’s theory is internally inconsistent with the physical evidence and timeline.</li>
+  </ol>
+
+  <p class="note">The following analysis leads to the position that this case appears to lack the evidentiary foundation required to sustain the charges as written.</p>
+
+  <h2 id="reasoning" class="sec-reasoning">Reasoning</h2>
+  <h3>1. Indictment Theory of Domestic Violence Status</h3>
+  <p><em>Key issue:</em> Whether the State can legally classify the alleged conduct as “domestic violence” under Oregon law.</p>
+  <p>Both counts depend on proving a qualifying “family or household member” relationship under ORS 135.230.</p>
+  <p>Requires: “Victim is family member or household member as defined in ORS 135.230.”</p>
+  <p>Argument: “She was a guest staying for a little while… no shared expenses, responsibilities… two beds here… she is engaged.”</p>
+  <p><strong>Need to examine:</strong> whether the State can prove “cohabitation” under Oregon law.</p>
+  <p>The statute requires a marriage-like relationship, not simply living under the same roof (“nature of the relationship… shared residence and mutual responsibilities… presentation as a couple”).</p>
+  <p>Points to argue:</p>
+  <ul>
+    <li>No shared finances</li>
+    <li>No romantic or sexual relationship</li>
+    <li>No shared responsibilities</li>
+    <li>Separate beds</li>
+    <li>Temporary guest status</li>
+    <li>She has a fianc&eacute; elsewhere</li>
+  </ul>
+  <p>This is a threshold issue. If the relationship does not qualify, both charges lose their DV enhancement, and Count 1 may lose felony status entirely.</p>
+
+  <h3>2. Count 1: Strangulation (Class C Felony)</h3>
+  <p><em>Key issue:</em> Whether any statutory aggravator exists.</p>
+  <p>Your document lists felony-elevating factors under ORS 163.187(4): “Victim is family or household member… victim under 10… weapon… prior convictions… pregnancy…”</p>
+  <p><strong>Your attorney should analyze:</strong></p>
+  <p><strong>A. Which aggravator the State is relying on</strong></p>
+  <p>The indictment states: “The victim is a family or household member.”</p>
+  <p>This suggests reliance solely on the “family or household member” aggravator. If that fails, Count 1 may reduce from a Class C felony to a Class A misdemeanor.</p>
+  <p><strong>B. Whether the State can prove “impeding breathing”</strong></p>
+  <p>The indictment alleges: “impede the normal breathing or blood circulation… by applying pressure on the throat and neck or chest…”</p>
+  <p>Items to examine:</p>
+  <ul>
+    <li>Medical evidence: none (did not take her to hospital)</li>
+    <li>Photographs: none</li>
+    <li>Officer observations: if injury was observed, medical attention should have been pushed</li>
+    <li>Statements made at the scene</li>
+    <li>Whether alleged conduct is physically consistent with “impeding breathing”</li>
+  </ul>
+  <p>If evidence is weak or inconsistent, this is a major defense point.</p>
+
+  <h3>3. Count 2: Menacing (Domestic Violence)</h3>
+  <p><em>Key issue:</em> Whether the statutory elements are met.</p>
+  <p>Test language: “IF the person acted intentionally… IF the act was intended to place another in fear… IF the threatened harm was imminent…”</p>
+  <p><strong>Focus areas:</strong></p>
+  <p><strong>A. Intent</strong></p>
+  <p>“When the police got here, I was asleep in my bed… no interaction going on.”</p>
+  <p>State may not be able to prove:</p>
+  <ul>
+    <li>Intentional conduct</li>
+    <li>An attempt</li>
+    <li>Imminence</li>
+    <li>A substantial step</li>
+  </ul>
+  <p>This is a major evidentiary contradiction.</p>
+  <p><strong>B. Imminence</strong></p>
+  <p>“Imminent” means immediate and impending, not remote or speculative.</p>
+  <p>If the alleged threat occurred earlier, and police found both parties in separate rooms asleep or calm, imminence is undermined.</p>
+  <p><strong>C. Substantial Step</strong></p>
+  <p>Menacing is an attempt crime. Questions:</p>
+  <ul>
+    <li>What conduct constitutes the “substantial step”?</li>
+    <li>Is there evidence of action taken at the time police arrived?</li>
+    <li>Is the allegation purely retrospective?</li>
+  </ul>
+  <p>If the only evidence is a statement made after the fact, it is a weak menacing case.</p>
+
+  <h3>4. Domestic Violence Designation</h3>
+  <p><em>Key issue:</em> Whether the DV label is legally supportable.</p>
+  <p>“Domestic violence designation applies when the victim and offender are in a qualifying relationship under ORS 132.586.”</p>
+  <p>Analyze:</p>
+  <ul>
+    <li>Whether the State can prove the relationship</li>
+    <li>Whether the DV designation is improperly applied</li>
+    <li>Whether the indictment’s DV language is conclusory rather than factual</li>
+  </ul>
+  <p>If the relationship fails, the DV designation must be removed.</p>
+  <p>This affects:</p>
+  <ul>
+    <li>Firearm rights</li>
+    <li>Sentencing</li>
+    <li>Probation terms</li>
+    <li>Future background checks</li>
+    <li>Federal reporting</li>
+  </ul>
+
+  <h3>5. Evidentiary Weaknesses to Investigate</h3>
+  <p><strong>A. Body-worn camera footage</strong> (verify condition, demeanor, statements, physical evidence)</p>
+  <p><strong>B. 911 call and dispatch logs</strong> (who called, what was said, fear expressed, contradictions)</p>
+  <p><strong>C. Medical records</strong> (signs of strangulation, injuries, inconsistencies)</p>
+  <p><strong>D. Witness statements</strong> (corroboration, statement changes)</p>
+  <p><strong>E. Prior relationship evidence</strong> to establish:</p>
+  <ul>
+    <li>No romantic relationship</li>
+    <li>No cohabitation</li>
+    <li>No shared finances</li>
+    <li>No shared responsibilities</li>
+  </ul>
+  <p>This directly attacks DV classification.</p>
+
+  <h3>6. Procedural Issues</h3>
+  <ul>
+    <li><strong>Motion to Dismiss DV Enhancements:</strong> if relationship definition fails, DV designation is improper.</li>
+    <li><strong>Motion to Reduce Count 1 to Misdemeanor:</strong> if no aggravator applies, Count 1 cannot be a felony.</li>
+    <li><strong>Motion for Judgment of Acquittal (MJOA) on Menacing:</strong> if intent, imminence, and substantial step are not proven, menacing cannot stand.</li>
+    <li><strong>Motion to Compel Discovery:</strong> if medical evidence, bodycam, witness statements, or photos have not been produced.</li>
+  </ul>
+
+  <h3>7. Narrative Issues</h3>
+  <p>“She was a guest… temporary help for a friend… she is engaged… no shared infrastructure.”</p>
+  <p>Prepare:</p>
+  <ul>
+    <li>Clear, consistent narrative</li>
+    <li>Corroborating evidence (texts, messages, lease, photos of separate beds)</li>
+    <li>Timeline reconstruction</li>
+    <li>Evidence of her fianc&eacute; and living situation</li>
+  </ul>
+  <p>This is essential for undermining DV classification.</p>
+  <p class="note">State theory challenge: no physical evidence, no corroboration, and complainant recantation.</p>
+
+  <h2 id="breakdown" class="sec-breakdown">Additional Breakdown</h2>
+  <h3>1. Legal Elements Require Evidence</h3>
+  <p>Both documents emphasize the State must prove:</p>
+  <ul>
+    <li>Impeding breathing for strangulation</li>
+    <li>Intent + imminence + substantial step for menacing</li>
+    <li>A qualifying domestic relationship for DV status</li>
+  </ul>
+  <p>Documents note: “There were no photographs, no medical attention, no witnesses.” “She was intoxicated at the time.” “She has been recanting beginning the day after and ever since.”</p>
+  <p>These are direct contradictions to factual assertions in the indictment.</p>
+
+  <h3>2. Lack of Medical Evidence</h3>
+  <p>Strangulation cases normally require documented indicators such as:</p>
+  <ul>
+    <li>Petechiae</li>
+    <li>Bruising</li>
+    <li>Redness</li>
+    <li>Hoarseness</li>
+    <li>Difficulty swallowing</li>
+    <li>Medical evaluation</li>
+    <li>Photographs</li>
+    <li>Officer observations</li>
+  </ul>
+</main>
+
+</body>
+</html>
