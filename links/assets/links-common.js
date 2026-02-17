@@ -1,4 +1,3 @@
-// links/assets/links-common.js
 (() => {
   const SESSION_KEY = "links_access_granted";
   const LOGIN_PAGE = "index.html";
