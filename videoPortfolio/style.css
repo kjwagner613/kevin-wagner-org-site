@@ -7,8 +7,8 @@ body {
   font-family: "Montserrat", sans-serif;
   background: #000;
   color: #fff;
-  min-width: 800px;
-  overflow-x: auto;
+  min-width: 801px;
+  overflow-x: scroll;
 }
 
 .bg {
@@ -104,10 +104,9 @@ body {
   padding-left: 15px;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  /* flex: 1; */
   display: flex;
-  /* max-width: 700px; */
   width: clamp(37vw, 10vw, 35vw);
+  min-width: 760px;
   height: 20vh;
   box-sizing: border-box;
   align-content: center;
@@ -140,7 +139,6 @@ body {
   border-bottom: 1px solid orange;
   padding-bottom: 0.25rem;
   display: inline-block;
-  /* min-height: 44px; */
   line-height: 1.5;
 }
 
@@ -160,7 +158,6 @@ body {
 }
 
 .ClosingText {
-
   position: fixed;
   bottom: 5px;
   left: 20px;
@@ -170,15 +167,9 @@ body {
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
-  /* cursor: pointer; */
   z-index: 10;
   transition: all 0.3s;
-  /* min-height: 44px; */
-  /* min-width: 44px; */
   backdrop-filter: blur(10px);
-
-
-
 }
 
 .contact-btn {
@@ -264,7 +255,6 @@ body {
 }
 
 .credits-card:hover {
-  /* transform: translateY(-2px); */
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.22);
 }
@@ -315,38 +305,14 @@ body {
     display: inline;
   }
 
-  body {
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-    background: #000;
-    color: #fff;
-    background: radial-gradient(circle at 20% 20%, rgba(26, 6, 99, 0.65),
-        rgba(255, 249, 239, 0) 45%),
-      linear-gradient(100deg, #3b4653 0%, #2f373f 48%, #664718 100%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    position: relative;
-  }
-
-
   .overlay {
-    min-height: 95vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 40px 16px;
-    margin-top: -05vh;
-    position: relative;
-    z-index: 2;
+    gap: 0.7rem;
   }
-
   .menu-title {
     font-size: clamp(1.8rem, 5vw, 2.4rem);
     color: rgb(150, 39, 39);
     margin: 0;
+    margin-bottom: -10px;
     text-align: center;
   }
 
@@ -354,6 +320,7 @@ body {
     font-size: clamp(0.9rem, 3vw, 1.2rem);
     color: rgb(209, 197, 190);
     margin: 0;
+    margin-top: -8px;
     font-weight: normal;
     text-align: center;
   }
@@ -365,11 +332,9 @@ body {
     padding-left: 15px;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    /* flex: 1; */
     display: flex;
-    /* max-width: 700px; */
     width: 55vw;
-    height: 420px;
+    min-width: 760px;
     box-sizing: border-box;
     align-content: center;
     justify-content: center;
@@ -382,7 +347,7 @@ body {
     flex-wrap: nowrap;
     justify-content: center;
     align-content: center;
-    padding-top: 4vh
+    padding-top: 2vh
   }
 
 }
