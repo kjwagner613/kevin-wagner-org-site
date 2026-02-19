@@ -1,5 +1,39 @@
-<div class="topbar">
-    <div class="brand">KJW • Private</div>
-    <div class="nav"> <a href="./neverHub.html">Home</a> <a href="./index.html"
-            onclick="sessionStorage.removeItem('links_access_granted')"> Logout </a> </div>
+<style>
+    .topbar-shell {
+        max-width: 980px;
+        margin: 0 auto 18px;
+        padding: 0 20px;
+    }
+
+    .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        background: rgba(255, 255, 255, .92);
+        border: 1px solid rgba(0, 0, 0, .12);
+        border-radius: 14px;
+        padding: 12px 16px;
+        box-shadow: 0 8px 26px rgba(0, 0, 0, .08);
+    }
+
+    .topbar .brand {
+        font-weight: 700;
+        letter-spacing: .02em;
+    }
+
+    .topbar .nav a {
+        margin-left: 14px;
+    }
+
+    .topbar .nav a:first-child {
+        margin-left: 0;
+    }
+</style>
+<div class="topbar-shell">
+    <div class="topbar">
+        <div class="brand">KJW • Private</div>
+        <div class="nav"> <a class="home-link" href="/links/neverHub.html">Home</a> <a href="/index.html"
+                onclick="sessionStorage.removeItem('links_access_granted')"> Logout </a> </div>
+    </div>
 </div>

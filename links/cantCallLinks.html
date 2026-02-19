@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow, noarchive">
     <title>Shared-Semi-Protected Content</title>
+    <script defer src="./assets/links-common.js"></script>
     <script>
         const SESSION_KEY = "links_access_granted";
 
         // If they didn't come through the gate, bounce them back
         if (sessionStorage.getItem(SESSION_KEY) !== "1") {
-            window.location.replace("index.html");
+            window.location.replace("/index.html");
         }
     </script>
 
@@ -26,16 +27,17 @@
 
 
 <body>
+    <div id="pagetop"></div>
     <div class="card-grid">
         <div class="card">
             <h1>Links</h1>
             <ul>
-                <li><a href="https://kevin-wagner-portfolio.netlify.app/" target="_blank">Helper Friends Portfolio</a>
+                <li><a href="https://kevin-wagner-portfolio.netlify.app/">Helper Friends Portfolio</a>
                 </li>
-                <li><a href="https://portfolio-craftsman.netlify.app/" target="_blank">Craftsman Portfolio</a></li>
-                <li><a href="/videoPortfolio/index.html" target="_blank">Video Portfolio</a></li>
-                <li><a href="../resume/coverLetter/index.html" target="_blank">Standard Cover Letter</a></li>
-                <li><a href="../resume/index.html" target="_blank">Full Resume</a></li>
+                <li><a href="https://portfolio-craftsman.netlify.app/">Craftsman Portfolio</a></li>
+                <li><a href="/videoPortfolio/index.html">Video Portfolio</a></li>
+                <li><a href="../resume/coverLetter/index.html">Standard Cover Letter</a></li>
+                <li><a href="../resume/index.html">Full Resume</a></li>
             </ul>
         </div>
 
