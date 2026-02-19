@@ -7,7 +7,8 @@ body {
   font-family: "Montserrat", sans-serif;
   background: #000;
   color: #fff;
-  min-width: 900px;
+  min-width: 800px;
+  overflow-x: auto;
 }
 
 .bg {
@@ -107,7 +108,7 @@ body {
   display: flex;
   /* max-width: 700px; */
   width: clamp(37vw, 10vw, 35vw);
-  height: 27vh;
+  height: 20vh;
   box-sizing: border-box;
   align-content: center;
   justify-content: center;
@@ -139,8 +140,8 @@ body {
   border-bottom: 1px solid orange;
   padding-bottom: 0.25rem;
   display: inline-block;
-  min-height: 44px;
-  line-height: 1.6;
+  /* min-height: 44px; */
+  line-height: 1.5;
 }
 
 .menu-col a:hover {
@@ -152,6 +153,32 @@ body {
 .category-label {
   font-weight: bold;
   color: rgb(90, 83, 71);
+}
+
+.category-label .label-short {
+  display: none;
+}
+
+.ClosingText {
+
+  position: fixed;
+  bottom: 5px;
+  left: 20px;
+  padding: 12px 18px;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  /* cursor: pointer; */
+  z-index: 10;
+  transition: all 0.3s;
+  /* min-height: 44px; */
+  /* min-width: 44px; */
+  backdrop-filter: blur(10px);
+
+
+
 }
 
 .contact-btn {
@@ -279,7 +306,15 @@ body {
   transform: translateY(-2px);
 }
 
-@media (max-width: 890px) {
+@media (max-width: 1250px) {
+  .category-label .label-long {
+    display: none;
+  }
+
+  .category-label .label-short {
+    display: inline;
+  }
+
   body {
     margin: 0;
     font-family: "Montserrat", sans-serif;
@@ -334,7 +369,7 @@ body {
     display: flex;
     /* max-width: 700px; */
     width: 55vw;
-    height: 45vh;
+    height: 420px;
     box-sizing: border-box;
     align-content: center;
     justify-content: center;

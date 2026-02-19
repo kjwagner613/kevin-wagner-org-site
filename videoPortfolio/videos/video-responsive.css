@@ -63,9 +63,11 @@ video {
   border-radius: 4px;
 }
 
-.video-container a {
+.panel-actions .panel-back,
+.panel-actions .play-unmute-btn {
   color: rgb(81, 143, 172);
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-family: inherit;
   text-decoration: none;
   padding: 12px 20px;
   border: 1px solid rgb(81, 143, 172);
@@ -76,10 +78,14 @@ video {
   align-items: center;
   justify-content: center;
   text-align: center;
+  background: transparent;
+  cursor: pointer;
 }
 
-.video-container a:hover,
-.video-container a:active {
+.panel-actions .panel-back:hover,
+.panel-actions .panel-back:active,
+.panel-actions .play-unmute-btn:hover,
+.panel-actions .play-unmute-btn:active {
   background: rgb(81, 143, 172);
   color: white;
   transform: translateY(-2px);
@@ -93,7 +99,9 @@ video {
   border-radius: 12px;
   background: rgba(0, 0, 0, 0.3);
   width: 100%;
+  max-width: 360px;
   box-sizing: border-box;
+  align-self: start;
 }
 
 .technology h3 {
@@ -110,6 +118,40 @@ video {
   margin: 12px 0;
   font-size: clamp(0.9rem, 2.5vw, 1rem);
   line-height: 1.6;
+}
+
+.panel-actions {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel-actions .volume-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.panel-actions .vol-btn {
+  flex: 1;
+  color: rgb(81, 143, 172);
+  font-size: clamp(0.85rem, 2.2vw, 1rem);
+  font-family: inherit;
+  padding: 10px 14px;
+  border: 1px solid rgb(81, 143, 172);
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 0;
+  transition: all 0.3s ease;
+}
+
+.panel-actions .vol-btn:hover,
+.panel-actions .vol-btn:active {
+  background: rgb(81, 143, 172);
+  color: white;
+  transform: translateY(-2px);
 }
 
 /* Bottom Info Block - Responsive */
