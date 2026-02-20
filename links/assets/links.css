@@ -61,6 +61,36 @@ body {
     padding: 22px;
     box-shadow: 0 8px 26px rgba(0, 0, 0, .08);
 }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+
+.card-grid-flex {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+
+.card-1 {
+    flex: 1;
+        background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, .08);
+
+
+
+}
+
+
+
 .listComment {
     list-style: none;
     font-size: 20px;
