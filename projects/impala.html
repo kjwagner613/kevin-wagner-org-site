@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+  <title>Impala | Sovereign Listening Environment</title>
+  <style>
+    body {
+      color: #18211f;
+      text-shadow: none;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.4)),
+        linear-gradient(135deg, #f4f1ea 0%, #dce3df 52%, #b9c4c0 100%);
+    }
+
+    .impala-page {
+      --surface: rgba(255, 255, 255, 0.74);
+      --text: #18211f;
+      --muted: #4a5653;
+      --line: rgba(31, 45, 42, 0.18);
+      --accent: #2f5d50;
+      --accent-dark: #1f433a;
+      max-width: 960px;
+      padding-bottom: 2rem;
+    }
+
+    .impala-page .hero {
+      display: block;
+      padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(1.5rem, 4vw, 2.75rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .impala-page .hero-copy h1 {
+      color: var(--text);
+      font-size: clamp(3rem, 9vw, 6.25rem);
+      font-weight: 650;
+      line-height: 0.95;
+      margin: 0.35rem 0 1rem;
+    }
+
+    .impala-page .hero-copy p {
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      line-height: 1.7;
+    }
+
+    .impala-page .eyebrow {
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+    }
+
+    .impala-page .button-row {
+      margin-top: 1.4rem;
+    }
+
+    .impala-page .primary-button,
+    .impala-page .card-link {
+      border-radius: 6px;
+    }
+
+    .impala-page .primary-button {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+      font-weight: 650;
+      padding: 0.68rem 0.95rem;
+    }
+
+    .impala-page .primary-button.secondary {
+      background: transparent;
+      color: var(--accent-dark);
+      border-color: rgba(31, 67, 58, 0.38);
+    }
+
+    .impala-page .card-link::after {
+      content: none;
+    }
+
+    .impala-page .section {
+      background: var(--surface);
+      border-color: var(--line);
+      border-radius: 8px;
+      box-shadow: 0 18px 42px rgba(31, 45, 42, 0.08);
+      margin-top: 1.25rem;
+      padding: clamp(1.1rem, 3vw, 1.6rem);
+    }
+
+    .impala-page .section h2 {
+      color: var(--text);
+      font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+      font-weight: 680;
+      line-height: 1.2;
+      margin-bottom: 0.65rem;
+    }
+
+    .impala-page .section p,
+    .impala-page ul {
+      color: var(--muted);
+    }
+
+    .impala-page .section p {
+      line-height: 1.68;
+    }
+
+    .impala-page .section-intro {
+      margin-bottom: 1rem;
+    }
+
+    .impala-page li {
+      line-height: 1.55;
+      margin-bottom: 0.42rem;
+    }
+
+    .impala-page strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .impala-page .principle-statement {
+      color: var(--accent-dark);
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      font-style: italic;
+      font-weight: 650;
+      margin: 0.25rem 0 0.85rem;
+    }
+
+    .impala-page .footer-note a {
+      color: rgba(31, 67, 58, 0.56);
+    }
+
+    @media (max-width: 640px) {
+      .impala-page .button-row {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .impala-page .primary-button {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<main class="home-page impala-page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Sovereign Listening Environment</p>
+      <h1>Impala</h1>
+      <p>
+        Impala is a calm, predictable, user-controlled music environment designed to remove algorithmic noise,
+        advertising pressure, and platform-driven behavioral shaping from the act of listening.
+      </p>
+      <div class="button-row">
+        <a class="primary-button" href="#artist-edition">
+          Artist Edition Overview
+        </a>
+        <a class="primary-button secondary" href="../index.html">
+          Return Home
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO SECTION -->
+  <div class="section">
+    <h2>What Impala Is</h2>
+    <p class="section-intro">
+      Impala is built on a simple premise: technology should respect attention. It should behave predictably,
+      remain faithful to its stated purpose, and avoid manipulative patterns. Impala is not a feed, a funnel,
+      or a growth mechanism. It is a listening tool.
+    </p>
+    <ul>
+      <li>No algorithmic recommendations</li>
+      <li>No engagement traps</li>
+      <li>No ads, no tracking, no harvesting</li>
+      <li>Local-first, user-controlled playback</li>
+      <li>Designed for reliability, not addiction</li>
+    </ul>
+  </div>
+
+  <!-- DESIGN PRINCIPLES -->
+  <div class="section">
+    <h2>Design Principles</h2>
+    <p class="section-intro">
+      Impala is governed by a short set of design principles that guide the interface, storage model,
+      playback behavior, and artist-facing tools.
+    </p>
+    <ul>
+      <li><strong>Simplicity is reliability.</strong> Remove complexity, remove failure.</li>
+      <li><strong>Stay faithful to purpose.</strong> A player should play, clearly and consistently.</li>
+      <li><strong>No iteration in the body of code.</strong> Stability over novelty.</li>
+      <li><strong>Sovereign systems.</strong> The user owns the experience.</li>
+      <li><strong>Zero manipulation.</strong> No algorithms shaping behavior.</li>
+    </ul>
+  </div>
+
+  <!-- USER EDITION -->
+  <div class="section">
+    <h2>User Edition</h2>
+    <p class="section-intro">
+      The User Edition is the everyday listening environment: simple, calm, and predictable.
+    </p>
+    <ul>
+      <li>Local playlists</li>
+      <li>Starred tracks</li>
+      <li>Minimal UI</li>
+      <li>No feeds, no noise</li>
+      <li>Direct control over playback</li>
+    </ul>
+  </div>
+
+  <!-- ARTIST EDITION -->
+  <div class="section" id="artist-edition">
+    <h2>Artist Edition</h2>
+    <p class="section-intro">
+      The Artist Edition is a formalized environment for musicians to manage creative assets, control
+      distribution, and maintain sovereignty over their work. It is built on the same principles as the User
+      Edition, but with expanded capabilities.
+    </p>
+    <ul>
+      <li>Asset management (audio, metadata, artwork)</li>
+      <li>Rights and compliance visibility</li>
+      <li>Audience communication tools</li>
+      <li>Playlist and message-link controls</li>
+      <li>Temporary local storage for drafts and experiments</li>
+    </ul>
+  </div>
+
+  <!-- SLEEPE PRINCIPLE -->
+  <div class="section">
+    <h2>The Sleepe Principle</h2>
+    <p class="section-intro">
+      The core rule of Impala:
+    </p>
+    <p class="principle-statement">
+      Impala stores nothing in and out of itself.
+    </p>
+    <p>
+      This principle ensures that Impala never becomes a data-harvesting platform. User activity stays local,
+      temporary, and under direct user control.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer-note">
+    <a href="../index.html">Return to Home</a>
+  </footer>
+
+</main>
+</body>
+</html>

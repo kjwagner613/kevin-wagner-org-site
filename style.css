@@ -1,16 +1,39 @@
 :root {
-  --bg: #a250a7;
-  --surface: #cac0c0;
-  --text: #000000;
-  --muted: #5b584f;
-  --line: #d8d3c6;
-  --accent: #225a45;
+  --bg: #eef1ef;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: #ffffff;
+  --text: #151b1f;
+  --muted: #4d5960;
+  --line: rgba(38, 52, 58, 0.16);
+  --accent: #1f5d4a;
+  --accent-dark: #164334;
+  --shadow: 0 18px 44px rgba(28, 39, 45, 0.1);
 }
 
 * {
   box-sizing: border-box;
 }
-
+.header-tray, .title-tray {
+  background: 
+    linear-gradient(135deg, 
+      #d4d4d4 0%, 
+      #f0f0f0 25%, 
+      #b0b0b0 50%, 
+      #f0f0f0 75%, 
+      #d4d4d4 100%),
+    linear-gradient(45deg, 
+      rgba(255, 255, 255, 0.3) 0%, 
+      rgba(255, 255, 255, 0) 50%, 
+      rgba(255, 255, 255, 0.3) 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  box-shadow: 0 10px 30px rgba(18, 54, 97, 0.3); /* subtle shadow matching dark bg */
+  color: var(--text);
+  max-width: fit-content;
+  margin-bottom: 1rem;
+}
 
 .montserrat {
   font-family: "Montserrat", sans-serif;
@@ -23,14 +46,17 @@ body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   color: var(--text);
-  text-shadow: 0 0 5px rgb(148, 125, 125);
-  background: radial-gradient(circle at 20% 20%, rgba(255, 249, 239, 0.65), rgba(255, 249, 239, 0) 45%),
-    linear-gradient(160deg, #4e5d6d 0%, #808a94 48%, #9b6d5f 100%);
+  text-shadow: none;
+  background:
+    radial-gradient(circle at 15% 15%, #0A2342 0%, #1D4E89 65%),
+    linear-gradient(60deg, #3A8D7D 30%, #0A2342 90%);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: cover;
+
+
   position: relative;
-  padding: 2%;
+  padding: clamp(1rem, 2vw, 2rem);
 }
 
 #root {
@@ -39,24 +65,31 @@ body {
 }
 
 .home-page {
-  width: min(1024px, 100%);
+  width: min(1060px, 100%);
   margin: 0 auto;
 }
 
 .hero {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 1.5rem;
+  gap: clamp(1.5rem, 4vw, 3rem);
   align-items: center;
+  padding: clamp(1rem, 3vw, 2rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+  border-bottom: 1px solid var(--line);
 }
 
 .hero-copy h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin: 0.25rem 0 0.75rem;
+  font-size: clamp(2.8rem, 6vw, 4.75rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.96;
+  margin: 0.35rem 0 1rem;
 }
 
 .hero-copy p {
   color: var(--muted);
+  font-size: clamp(0.98rem, 1.6vw, 1.1rem);
+  line-height: 1.62;
   margin: 0;
   max-width: 60ch;
 }
@@ -64,10 +97,10 @@ body {
 .eyebrow {
   margin: 0;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
+  letter-spacing: 0.12em;
+  color: var(--accent-dark);
 }
 
 .video-shell {
@@ -95,11 +128,9 @@ body {
 }
 
 .title {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(1.45rem, 3vw, 2.1rem);
+  font-weight: 700;
   margin: 0.5rem 0;
-  font-style: italic;
-
-
 }
 
 
@@ -107,11 +138,15 @@ body {
   margin-top: 2rem;
   padding: 1.25rem;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 8px;
   background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
 .section h2 {
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1.2;
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
@@ -125,13 +160,19 @@ ul {
 
 li {
   margin-bottom: 0.4rem;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 a {
   color: var(--accent);
   text-decoration: none;
   line-height: 1.5;
+}
+
+.text-link {
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-style: italic;
 }
 
 .section p {
@@ -148,14 +189,22 @@ a {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.15rem;
 }
 
 .card {
   border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 1rem;
+  border-radius: 8px;
+  padding: clamp(1rem, 2vw, 1.3rem);
   background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.card h2 {
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  line-height: 1.18;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 .card h3 {
@@ -164,6 +213,14 @@ a {
 
 .card p {
   margin: 0;
+  line-height: 1.55;
+}
+
+.status-note {
+  display: block;
+  color: var(--accent-dark);
+  font-weight: 700;
+  margin-top: 0.75rem;
 }
 
 .card-grid-footer {
@@ -179,13 +236,13 @@ a {
 }
 
 .card-grid-header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  margin-top: 1rem;
+  margin-top: 1.1rem;
 
 }
 
+.card-grid-header .card {
+  text-align: center;
+}
 
 .card-id {
   font-size: 0.82rem;
@@ -216,8 +273,8 @@ a {
 .card-link {
   display: inline-block;
   margin-top: 0.75rem;
-  color: var(--accent);
-  font-weight: 600;
+  color: var(--accent-dark);
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -244,11 +301,11 @@ a {
   color: var(--accent);
   font-weight: 200;
   text-decoration: none;
-  border: 3px solid #cac0c0;
+  border: 1px solid var(--line);
   padding: 1rem;
   border-radius: 8px;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)  ;
+  box-shadow: var(--shadow);
 }
 
 
@@ -258,6 +315,10 @@ a {
   text-align: center;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.quiet-link {
+  color: rgba(36, 54, 58, 0.48);
 }
 
 @media (max-width: 860px) {
@@ -274,17 +335,18 @@ a {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-top: 0.75rem;
+  margin-top: 1rem;
 }
 
 .primary-button {
   border: 1px solid var(--line);
-  background: var(--accent);
+  background: var(--accent-dark);
   color: white;
-  padding: 0.55rem 0.9rem;
-  border-radius: 8px;
+  padding: 0.62rem 0.95rem;
+  border-radius: 6px;
   cursor: pointer;
   font: inherit;
+  font-weight: 650;
 }
 
 .primary-button:hover {
@@ -334,7 +396,7 @@ a {
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 22px 50px rgba(28, 39, 45, 0.14);
   transition: all 0.2s ease;
   /* cursor: pointer; */
 }
@@ -343,3 +405,4 @@ a {
 .card a:not(.card-link) {
   position: relative;
   z-index: 2;
+}
