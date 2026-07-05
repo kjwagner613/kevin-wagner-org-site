@@ -3,7 +3,8 @@
   --surface: rgba(255, 255, 255, 0.78);
   --surface-strong: #ffffff;
   --text: #151b1f;
-  --muted: #4d5960;
+  --text-tray: #1c2730;
+  --muted: #cdd9e0;
   --line: rgba(38, 52, 58, 0.16);
   --accent: #1f5d4a;
   --accent-dark: #164334;
@@ -30,7 +31,7 @@
   border-radius: 8px;
   padding: 1rem 2rem;
   box-shadow: 0 10px 30px rgba(18, 54, 97, 0.3); /* subtle shadow matching dark bg */
-  color: var(--text);
+  /* color: var(--text); */
   max-width: fit-content;
   margin-bottom: 1rem;
 }
@@ -149,6 +150,13 @@ body {
   line-height: 1.2;
   margin-top: 0;
   margin-bottom: 0.5rem;
+}
+
+.text-tray {
+  color: black;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  line-height: 1.55;
+  margin: 0;
 }
 
 ul {
