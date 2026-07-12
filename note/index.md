@@ -1,19 +1,14 @@
 
+# Technology as a Peer, Not a Parent
 
-# Technology as a peer
+![Technology as a peer](techpeer.jpg)
 
-### This kr*p. I hate
+I have barely used headphones in weeks, partly because I am tired of devices that talk at me when I never asked. Somewhere along the way, we normalized software making suggestions as if it has authority over its user.
 
-![alt text](techpeer.jpg)
+The problem is not one notification. The problem is the pattern. Once operating systems and apps are allowed to constantly "advise" us, it becomes easier to justify deeper behavior changes that happen without clear consent.
 
-I have not even used headphones in weeks. Someone, somewhere decided it is a good thing to give technology authority, even if only a suggestion, it is unsolicited.  My property telling me what I should and should not do. 
+Then the ground shifts under people who rely on stable tools. A workflow that works today can quietly break tomorrow because a platform decided to enforce a new rule, hide a setting, or remove an option.
 
-That leads to making it autonomous, once they made it ok for our apps, operating systems, to start giving us unwelcome advice, then how much further until it made it ok to change our systems without our knowledge or consent.
+I know the common defense: "We couldn't predict every side effect." But systems design has always required anticipating interactions across components. Low-probability impacts still matter when they affect real users in production.
 
-Then, our systems and tools began shifting under our feet.  A process I may depend on today could be “disallowed” tomorrow. So, the break the integration to enforce. Used to be I didn’t even think when I sat down to work, that my software may not do what I need it to do. What it did only yesterday.  
-
-I know the excuse. “How could we know if we did this, it could cause that?”  Because since we first started to build interconnected processes, we say the effects one component could have on another. 
-
-Or, did these brainiacs never toy with analog circuits, digital circuits, before moving into system architecture.  If they didn’t, I would argue that maybe they are not qualified for the positions they have been given.
-
-Or maybe we are not as advanced as we think we are. Personally, considering the effects of something you put in the field, even low percentage ones, is part of the process BEFORE deploying. 
+If we want trustworthy technology, we need to treat users as owners, not passengers. That means transparent changes, reversible defaults, and real respect for consent before deployment.

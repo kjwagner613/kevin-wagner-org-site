@@ -4,62 +4,223 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Note</title>
+    <title>Field Note</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
+
+        :root {
+            --bg-1: #f6f1e8;
+            --bg-2: #e3ecf2;
+            --ink: #12212e;
+            --ink-soft: #3a4d5c;
+            --card: rgba(255, 255, 255, 0.78);
+            --line: rgba(18, 33, 46, 0.14);
+            --accent: #0e7f66;
+            --accent-dark: #0a5f4d;
+            --shadow: 0 24px 60px rgba(18, 33, 46, 0.16);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1f2937;
-            background: #3c6e71;
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            line-height: 1.65;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 15% 15%, #fffbf5 0%, transparent 35%),
+                radial-gradient(circle at 85% 10%, #e9f4fd 0%, transparent 45%),
+                linear-gradient(135deg, var(--bg-1), var(--bg-2));
+            background-attachment: fixed;
+            min-height: 100vh;
         }
 
         main {
-            max-width: 760px;
+            width: min(880px, 100% - 2rem);
             margin: 0 auto;
-            padding: 2rem 1rem 3rem;
+            padding: clamp(1.25rem, 3vw, 2.5rem) 0 4rem;
+        }
+
+        .note-shell {
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--card);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            backdrop-filter: blur(6px);
+            animation: shellIn 680ms ease-out both;
+        }
+
+        .note-top {
+            padding: clamp(1.25rem, 3vw, 2rem);
+            border-bottom: 1px solid var(--line);
+            background:
+                linear-gradient(155deg, rgba(14, 127, 102, 0.15), rgba(14, 127, 102, 0.03)),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.65));
+        }
+
+        .kicker {
+            margin: 0;
+            font-size: 0.73rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 800;
+            color: var(--accent-dark);
+        }
+
+        #note-title {
+            margin: 0.45rem 0 0;
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(1.65rem, 4vw, 2.65rem);
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+
+        .note-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+            margin-top: 0.9rem;
+            font-size: 0.87rem;
+            color: var(--ink-soft);
+            font-weight: 600;
         }
 
         #note-content {
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            padding: clamp(1.1rem, 3vw, 2.2rem);
+        }
+
+        #note-content>*:first-child {
+            margin-top: 0;
+        }
+
+        #note-content h1,
+        #note-content h2,
+        #note-content h3 {
+            font-family: "Fraunces", Georgia, serif;
+            line-height: 1.15;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+
+        #note-content h2 {
+            margin-top: 1.7rem;
+            margin-bottom: 0.6rem;
+            font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+        }
+
+        #note-content p {
+            color: #1d3343;
+            margin: 0.8rem 0;
         }
 
         #note-content img {
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 1rem 0;
+            margin: 1.2rem 0;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            box-shadow: 0 10px 30px rgba(18, 33, 46, 0.14);
+        }
+
+        #note-content a {
+            color: var(--accent-dark);
+            font-weight: 700;
         }
 
         #note-content pre {
             overflow-x: auto;
-            background: #f3f4f6;
-            padding: 0.75rem;
-            border-radius: 6px;
+            background: #f3f7fa;
+            border: 1px solid var(--line);
+            padding: 0.9rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
         }
 
         #note-content blockquote {
-            border-left: 4px solid #d1d5db;
+            border-left: 4px solid var(--accent);
             margin: 1rem 0;
-            padding: 0.25rem 0 0.25rem 1rem;
-            color: #4b5563;
+            padding: 0.2rem 0 0.2rem 1rem;
+            color: #2b485d;
+            font-weight: 500;
+        }
+
+        .loading {
+            color: var(--ink-soft);
+            animation: pulse 1.4s ease-in-out infinite;
+        }
+
+        @keyframes shellIn {
+            from {
+                transform: translateY(18px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 0.45;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 640px) {
+            main {
+                width: min(880px, 100% - 1rem);
+            }
+
+            .note-shell {
+                border-radius: 16px;
+            }
         }
     </style>
 </head>
 
 <body>
     <main>
-        <article id="note-content">Loading note...</article>
+        <section class="note-shell">
+            <header class="note-top">
+                <p class="kicker">Personal Note</p>
+                <h1 id="note-title">Loading note...</h1>
+                <div class="note-meta">
+                    <span id="note-date"></span>
+                    <span id="read-time"></span>
+                </div>
+            </header>
+            <article id="note-content" class="loading">Loading note...</article>
+        </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
+        function estimateReadTime(markdown) {
+            const words = markdown.trim().split(/\s+/).filter(Boolean).length;
+            const minutes = Math.max(1, Math.round(words / 220));
+            return `${minutes} min read`;
+        }
+
+        function getPrimaryHeading(markdown) {
+            const match = markdown.match(/^#\s+(.+)$/m);
+            return match ? match[1].trim() : 'Field Note';
+        }
+
         async function renderNote() {
             const contentEl = document.getElementById('note-content');
+            const titleEl = document.getElementById('note-title');
+            const dateEl = document.getElementById('note-date');
+            const readTimeEl = document.getElementById('read-time');
 
             try {
                 const response = await fetch('./index.md', { cache: 'no-store' });
@@ -69,9 +230,19 @@
                 }
 
                 const markdown = await response.text();
+                titleEl.textContent = getPrimaryHeading(markdown);
+                dateEl.textContent = new Date().toLocaleDateString(undefined, {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                readTimeEl.textContent = estimateReadTime(markdown);
                 contentEl.innerHTML = marked.parse(markdown);
+                contentEl.classList.remove('loading');
             } catch (error) {
+                titleEl.textContent = 'Note Unavailable';
                 contentEl.textContent = `Could not load Markdown note. ${error.message}`;
+                contentEl.classList.remove('loading');
             }
         }
 
