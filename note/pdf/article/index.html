@@ -153,11 +153,17 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      flex: 1 1 auto;
+      justify-content: flex-end;
+      flex-wrap: nowrap;
       padding: 8px 10px;
       border-radius: 10px;
       border: 1px solid #dbc8a6;
       background: rgba(255, 253, 245, 0.8);
       white-space: nowrap;
+      min-width: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
     }
 
     .action-group .btn {
@@ -261,8 +267,8 @@
 
       .action-group {
         width: 100%;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
       }
     }
   </style>
