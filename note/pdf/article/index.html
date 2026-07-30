@@ -72,6 +72,24 @@
       white-space: nowrap;
     }
 
+    .jump {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #4d4538;
+    }
+
+    .jump input {
+      width: 64px;
+      border: 1px solid var(--edge);
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 14px;
+      background: #fff;
+      color: var(--ink);
+    }
+
     .stage {
       overflow: auto;
       padding: 18px 12px 24px;
@@ -104,6 +122,36 @@
       min-height: 1.2em;
     }
 
+    .status-row {
+      width: min(1100px, 100%);
+      margin: 10px auto 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      min-height: 1.4em;
+    }
+
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid #cdbb93;
+      border-top-color: #23395b;
+      animation: spin 0.9s linear infinite;
+      display: none;
+    }
+
+    .spinner.show {
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     @media (max-width: 700px) {
       .toolbar {
         gap: 6px;
@@ -118,6 +166,10 @@
         width: 100%;
         margin-left: 0;
       }
+
+      .jump {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -128,6 +180,10 @@
       <button class="btn" id="next" type="button" aria-label="Next page">Next</button>
       <button class="btn" id="zoom-out" type="button" aria-label="Zoom out">-</button>
       <button class="btn" id="zoom-in" type="button" aria-label="Zoom in">+</button>
+      <label class="jump" for="page-jump">
+        Go to
+        <input id="page-jump" type="number" min="1" step="1" inputmode="numeric" aria-label="Go to page" />
+      </label>
       <a class="btn primary" href="DD-ValiantCEO.pdf" target="_blank" rel="noopener">Open Full PDF</a>
       <a class="btn" href="DD-ValiantCEO.pdf" download>Download</a>
       <div class="meta">
@@ -140,11 +196,14 @@
       <div class="canvas-wrap">
         <canvas id="pdf-canvas"></canvas>
       </div>
-      <p class="status" id="status"></p>
+      <div class="status-row">
+        <span class="spinner" id="spinner" aria-hidden="true"></span>
+        <p class="status" id="status"></p>
+      </div>
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="assets/pdfjs/pdf.min.js"></script>
   <script>
     (function () {
       var pdfPath = "DD-ValiantCEO.pdf";
@@ -163,6 +222,16 @@
       var pageCountEl = document.getElementById("page-count");
       var zoomLabelEl = document.getElementById("zoom-label");
       var statusEl = document.getElementById("status");
+      var spinnerEl = document.getElementById("spinner");
+      var pageJumpEl = document.getElementById("page-jump");
+
+      function showSpinner(show) {
+        spinnerEl.classList.toggle("show", !!show);
+      }
+
+      function openDirectPdf() {
+        window.location.replace(pdfPath);
+      }
 
       function setStatus(message) {
         statusEl.textContent = message || "";
@@ -170,6 +239,7 @@
 
       function renderPage(pageNum) {
         state.rendering = true;
+        showSpinner(true);
         setStatus("Rendering page " + pageNum + "...");
 
         state.pdfDoc.getPage(pageNum).then(function (page) {
@@ -184,6 +254,7 @@
 
           page.render(renderContext).promise.then(function () {
             state.rendering = false;
+            showSpinner(false);
             pageNumEl.textContent = String(state.pageNum);
             zoomLabelEl.textContent = "(" + Math.round(state.scale * 100) + "%)";
             setStatus("");
@@ -234,7 +305,21 @@
         queueRenderPage(state.pageNum);
       });
 
+      pageJumpEl.addEventListener("keydown", function (event) {
+        if (event.key !== "Enter") {
+          return;
+        }
+        var requested = Number(pageJumpEl.value);
+        if (!Number.isFinite(requested)) {
+          return;
+        }
+        goToPage(Math.round(requested));
+      });
+
       document.addEventListener("keydown", function (event) {
+        if (event.target === pageJumpEl) {
+          return;
+        }
         if (event.key === "ArrowRight") {
           goToPage(state.pageNum + 1);
         }
@@ -245,19 +330,24 @@
 
       if (window.pdfjsLib) {
         pdfjsLib.GlobalWorkerOptions.workerSrc =
-          "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.worker.min.js";
+          "assets/pdfjs/pdf.worker.min.js";
 
         setStatus("Loading PDF...");
+        showSpinner(true);
         pdfjsLib.getDocument(pdfPath).promise.then(function (pdfDoc) {
           state.pdfDoc = pdfDoc;
           state.pageCount = pdfDoc.numPages;
           pageCountEl.textContent = String(state.pageCount);
+          pageJumpEl.max = String(state.pageCount);
           renderPage(state.pageNum);
         }).catch(function () {
-          setStatus("Could not load PDF in viewer. Use Open Full PDF.");
+          showSpinner(false);
+          setStatus("Viewer unavailable. Opening full PDF...");
+          setTimeout(openDirectPdf, 450);
         });
       } else {
-        setStatus("Viewer script failed to load. Use Open Full PDF.");
+        setStatus("Viewer script failed. Opening full PDF...");
+        setTimeout(openDirectPdf, 450);
       }
     })();
   </script>
