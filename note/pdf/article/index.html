@@ -382,6 +382,7 @@
   <script>
     (function () {
       var pdfPath = "DD-ValiantCEO.pdf";
+      var storageKey = "dd_article_pdf_view_state_v1";
       var state = {
         pdfDoc: null,
         pageNum: 1,
@@ -411,6 +412,40 @@
       var indexBtn = document.getElementById("view-index");
       var pageBtn = document.getElementById("view-page");
 
+      function saveViewState() {
+        try {
+          var snapshot = {
+            pageNum: state.pageNum,
+            scale: state.scale,
+            viewMode: state.viewMode
+          };
+          localStorage.setItem(storageKey, JSON.stringify(snapshot));
+        } catch (_err) {
+          // Ignore storage issues (private mode, disabled storage).
+        }
+      }
+
+      function restoreViewState() {
+        try {
+          var raw = localStorage.getItem(storageKey);
+          if (!raw) {
+            return;
+          }
+          var parsed = JSON.parse(raw);
+          if (parsed && Number.isFinite(parsed.pageNum)) {
+            state.pageNum = Math.max(1, Math.round(parsed.pageNum));
+          }
+          if (parsed && Number.isFinite(parsed.scale)) {
+            state.scale = Math.max(0.5, Math.min(3, parsed.scale));
+          }
+          if (parsed && (parsed.viewMode === "index" || parsed.viewMode === "page")) {
+            state.viewMode = parsed.viewMode;
+          }
+        } catch (_err) {
+          // Ignore invalid JSON or blocked storage.
+        }
+      }
+
       function setReaderControlsDisabled(disabled) {
         prevBtn.disabled = disabled;
         nextBtn.disabled = disabled;
@@ -427,6 +462,7 @@
         indexBtn.classList.toggle("primary", isIndex);
         pageBtn.classList.toggle("primary", !isIndex);
         setReaderControlsDisabled(isIndex);
+        saveViewState();
       }
 
       function showSpinner(show) {
@@ -523,8 +559,10 @@
             state.rendering = false;
             showSpinner(false);
             pageNumEl.textContent = String(state.pageNum);
+            pageJumpEl.value = String(state.pageNum);
             zoomLabelEl.textContent = "(" + Math.round(state.scale * 100) + "%)";
             setStatus("");
+            saveViewState();
 
             if (state.pendingPage !== null) {
               var pending = state.pendingPage;
@@ -614,15 +652,22 @@
         pdfjsLib.GlobalWorkerOptions.workerSrc =
           "assets/pdfjs/pdf.worker.min.js?v=20260730";
 
+        restoreViewState();
+
         setStatus("Loading PDF...");
         showSpinner(true);
         pdfjsLib.getDocument(pdfPath).promise.then(function (pdfDoc) {
           state.pdfDoc = pdfDoc;
           state.pageCount = pdfDoc.numPages;
+          state.pageNum = Math.min(state.pageNum, state.pageCount);
           pageCountEl.textContent = String(state.pageCount);
           pageJumpEl.max = String(state.pageCount);
-          setViewMode("index");
-          renderThumbnails();
+          setViewMode(state.viewMode);
+          if (state.viewMode === "index") {
+            renderThumbnails();
+          } else {
+            queueRenderPage(state.pageNum);
+          }
         }).catch(function () {
           showSpinner(false);
           setStatus("Viewer unavailable. Opening full PDF...");
