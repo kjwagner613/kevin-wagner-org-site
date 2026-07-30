@@ -147,10 +147,21 @@
       gap: 6px;
       font-size: 13px;
       color: #4d4538;
+    }
+
+    .action-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 8px 10px;
       border-radius: 10px;
       border: 1px solid #dbc8a6;
       background: rgba(255, 253, 245, 0.8);
+      white-space: nowrap;
+    }
+
+    .action-group .btn {
+      margin: 0;
     }
 
     .jump input {
@@ -247,6 +258,12 @@
       .jump {
         width: 100%;
       }
+
+      .action-group {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
     }
   </style>
 </head>
@@ -266,12 +283,14 @@
       <button class="btn" id="next" type="button" aria-label="Next page">Next</button>
       <button class="btn" id="zoom-out" type="button" aria-label="Zoom out">-</button>
       <button class="btn" id="zoom-in" type="button" aria-label="Zoom in">+</button>
-      <label class="jump" for="page-jump">
-        Go to
-        <input id="page-jump" type="number" min="1" step="1" inputmode="numeric" aria-label="Go to page" />
-      </label>
-      <a class="btn primary" href="DD-ValiantCEO.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-      <a class="btn" href="DD-ValiantCEO.pdf" download>Download</a>
+      <div class="action-group" aria-label="Document actions">
+        <label class="jump" for="page-jump">
+          Go to
+          <input id="page-jump" type="number" min="1" step="1" inputmode="numeric" aria-label="Go to page" />
+        </label>
+        <a class="btn primary" href="DD-ValiantCEO.pdf" target="_blank" rel="noopener">Open Full PDF</a>
+        <a class="btn" href="DD-ValiantCEO.pdf" download>Download</a>
+      </div>
       <div class="meta">
         Page <span id="page-num">1</span> / <span id="page-count">--</span>
         <span id="zoom-label">(100%)</span>
