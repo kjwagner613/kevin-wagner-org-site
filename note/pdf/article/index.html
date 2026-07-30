@@ -6,12 +6,15 @@
   <title>Valiant CEO Article</title>
   <style>
     :root {
-      --bg: #f4f0e6;
+      --bg: #efe7d6;
       --panel: #fffaf0;
       --ink: #1e1b16;
-      --edge: #ddd3bc;
-      --action: #23395b;
+      --edge: #d7c6a1;
+      --action: #1e5c58;
       --action-ink: #ffffff;
+      --brand-deep: #1f3a52;
+      --brand-gold: #d2a24c;
+      --brand-cream: #fff6e3;
     }
 
     html,
@@ -35,41 +38,107 @@
       z-index: 2;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
       align-items: center;
-      padding: 10px 12px;
+      padding: 12px;
       border-bottom: 1px solid var(--edge);
-      background: rgba(255, 250, 240, 0.96);
-      backdrop-filter: blur(6px);
+      background:
+        linear-gradient(120deg, rgba(255, 250, 240, 0.98), rgba(255, 244, 220, 0.96)),
+        radial-gradient(circle at top right, rgba(30, 92, 88, 0.1), transparent 45%);
+      backdrop-filter: blur(7px);
+      box-shadow: 0 4px 18px rgba(35, 27, 11, 0.08);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 10px;
+      border-radius: 12px;
+      border: 1px solid #d4c3a0;
+      background: linear-gradient(135deg, var(--brand-cream), #fffdf9);
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      color: #fff;
+      background:
+        linear-gradient(140deg, var(--brand-deep), #2e607b 52%, var(--brand-gold));
+      box-shadow: 0 3px 10px rgba(31, 58, 82, 0.3);
+      overflow: hidden;
+    }
+
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-text {
+      display: grid;
+      line-height: 1;
+      gap: 4px;
+    }
+
+    .brand-text strong {
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      color: #253243;
+      font-weight: 700;
+    }
+
+    .brand-text em {
+      margin: 0;
+      font-style: normal;
+      font-size: 11px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: #786649;
     }
 
     .btn {
-      border: 1px solid var(--edge);
-      background: #fff;
-      color: var(--ink);
-      padding: 7px 10px;
-      border-radius: 8px;
+      border: 1px solid #ccb78f;
+      background: linear-gradient(180deg, #fff, #f8eedc);
+      color: #2b2116;
+      padding: 8px 11px;
+      border-radius: 10px;
       text-decoration: none;
       font-size: 14px;
       line-height: 1;
       cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
 
     .btn:hover {
-      border-color: #cdbb93;
+      transform: translateY(-1px);
+      border-color: #bfa06b;
+      box-shadow: 0 3px 8px rgba(61, 44, 18, 0.18);
     }
 
     .btn.primary {
-      border-color: var(--action);
-      background: var(--action);
+      border-color: #174a47;
+      background: linear-gradient(180deg, #26716c, var(--action));
       color: var(--action-ink);
     }
 
     .meta {
       margin-left: auto;
       font-size: 14px;
-      color: #4d4538;
+      color: #3f372d;
       white-space: nowrap;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid #dbc8a6;
+      background: rgba(255, 253, 245, 0.8);
     }
 
     .jump {
@@ -78,6 +147,10 @@
       gap: 6px;
       font-size: 13px;
       color: #4d4538;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid #dbc8a6;
+      background: rgba(255, 253, 245, 0.8);
     }
 
     .jump input {
@@ -154,7 +227,11 @@
 
     @media (max-width: 700px) {
       .toolbar {
-        gap: 6px;
+        gap: 8px;
+      }
+
+      .brand {
+        width: 100%;
       }
 
       .btn {
@@ -176,6 +253,15 @@
 <body>
   <div class="viewer">
     <div class="toolbar" role="toolbar" aria-label="PDF controls">
+      <div class="brand" aria-label="Viewer branding">
+        <span class="logo-mark" aria-hidden="true">
+          <img src="../../../public/DD-Badge-Favicon.ico" alt="" />
+        </span>
+        <span class="brand-text">
+          <strong>Valiant CEO</strong>
+          <em>Article Viewer</em>
+        </span>
+      </div>
       <button class="btn" id="prev" type="button" aria-label="Previous page">Prev</button>
       <button class="btn" id="next" type="button" aria-label="Next page">Next</button>
       <button class="btn" id="zoom-out" type="button" aria-label="Zoom out">-</button>
@@ -203,7 +289,7 @@
     </div>
   </div>
 
-  <script src="assets/pdfjs/pdf.min.js"></script>
+  <script src="assets/pdfjs/pdf.min.js?v=20260730"></script>
   <script>
     (function () {
       var pdfPath = "DD-ValiantCEO.pdf";
@@ -330,7 +416,7 @@
 
       if (window.pdfjsLib) {
         pdfjsLib.GlobalWorkerOptions.workerSrc =
-          "assets/pdfjs/pdf.worker.min.js";
+          "assets/pdfjs/pdf.worker.min.js?v=20260730";
 
         setStatus("Loading PDF...");
         showSpinner(true);
