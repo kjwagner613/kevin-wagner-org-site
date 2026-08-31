@@ -73,16 +73,14 @@ body {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: start;
   padding: clamp(1rem, 3vw, 2rem) 0 clamp(1.5rem, 4vw, 2.5rem);
   border-bottom: 1px solid var(--line);
 }
 
-.hero-right {
-  padding-top: clamp(9.6rem, 13vw, 10.9rem);
+.hero-details {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .hero-copy h1 {
@@ -243,11 +241,10 @@ a {
 }
 
 .hero-links-tray {
-  width: 100%;
-  max-width: 560px;
+  flex: 0 1 310px;
   padding: 1rem 1.25rem;
   margin-left: 0;
-  margin-top: 0.25rem;
+  margin-top: 0;
 }
 
 .hero-links-tray .section-intro {
@@ -441,13 +438,11 @@ a {
   }
 
   .hero {
-    grid-template-columns: 1fr;
-    gap: 1rem;
     padding-bottom: 1.25rem;
   }
 
-  .hero-right {
-    padding-top: 0;
+  .hero-details {
+    flex-direction: column;
   }
 
   .header-tray,
@@ -458,6 +453,7 @@ a {
 
   .hero-links-tray {
     margin-top: 0;
+    flex: none;
   }
 
   .credibility-line {
@@ -479,10 +475,15 @@ a {
   gap: 0.75rem;
   flex-wrap: nowrap;
   margin-top: 1rem;
+  margin-inline: auto;
   width: max-content;
   max-width: 100%;
   overflow-x: auto;
   padding-bottom: 0.25rem;
+}
+
+.profile-button-row {
+  margin-top: 0.25rem;
 }
 
 @media (max-width: 560px) {
@@ -525,6 +526,7 @@ a {
 
   .button-row {
     flex-wrap: wrap;
+    justify-content: center;
     width: auto;
     overflow-x: visible;
     padding-bottom: 0;
