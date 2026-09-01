@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coast Image Gallery</title>
+    <style>
+        :root {
+            --ink: #182422;
+            --paper: #f4f1e8;
+            --sea: #176b70;
+            --sand: #d9b77a;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: clamp(1.25rem, 4vw, 4rem);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            background-color: var(--paper);
+            background-image: linear-gradient(135deg, rgba(23, 107, 112, 0.09), transparent 42%);
+        }
+
+        main { width: min(1100px, 100%); margin: 0 auto; }
+
+        header { margin-bottom: clamp(1.5rem, 4vw, 3rem); border-bottom: 2px solid var(--sand); }
+
+        h1 { margin: 0 0 0.35rem; font-size: clamp(2.2rem, 6vw, 4.75rem); font-weight: 500; }
+
+        header p { margin: 0 0 1.25rem; font-family: "Trebuchet MS", sans-serif; color: #44615d; }
+
+        .deck-shell { width: min(680px, 100%); margin: 0 auto; }
+
+        .gallery {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            height: auto;
+        }
+
+        .flip-card {
+            position: absolute;
+            inset: 0;
+            aspect-ratio: 4 / 3;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            background: transparent;
+            perspective: 1000px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(24px) scale(0.91);
+            transition: transform 350ms ease, opacity 350ms ease;
+        }
+
+        .flip-card.is-current { z-index: 3; opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+        .flip-card.is-next { z-index: 2; opacity: 0.75; transform: translateY(13px) scale(0.96); }
+        .flip-card.is-after-next { z-index: 1; opacity: 0.45; transform: translateY(24px) scale(0.92); }
+
+        .flip-card-inner {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .flip-card:focus-visible { outline: 3px solid var(--sea); outline-offset: 4px; }
+
+        .flip-face {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border: 7px solid #fffdf7;
+            box-shadow: 0 8px 20px rgba(24, 36, 34, 0.17);
+        }
+
+        .flip-face img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+        .flip-back { display: none; }
+
+        .deck-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; }
+
+        .deck-control {
+            width: 3rem;
+            height: 3rem;
+            border: 1px solid var(--sea);
+            border-radius: 50%;
+            color: var(--sea);
+            font: 1.5rem/1 Georgia, serif;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .deck-control:hover, .deck-control:focus-visible { color: #fff; background: var(--sea); }
+
+        #deck-position { font-family: "Trebuchet MS", sans-serif; color: #44615d; }
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Coast to Coast</h1>
+            <p>A collection of connected-viewing concepts.</p>
+        </header>
+        <div class="deck-shell">
+        <section class="gallery" aria-label="Coast image deck">
+            <button class="flip-card is-current" type="button" aria-label="Couch 1 image">
+                <span class="flip-card-inner"><span class="flip-face"><img src="coast/couch1.png" alt="Couch 1"></span></span>
+            </button>
+            <button class="flip-card" type="button" aria-label="Couch 2 image">
+                <span class="flip-card-inner"><span class="flip-face"><img src="coast/couch2.png" alt="Couch 2"></span></span>
+            </button>
+            <button class="flip-card" type="button" aria-label="Couch 3 image">
+                <span class="flip-card-inner"><span class="flip-face"><img src="coast/couch3.png" alt="Couch 3"></span></span>
+            </button>
+            <button class="flip-card" type="button" aria-label="Couch 4 image">
+                <span class="flip-card-inner"><span class="flip-face"><img src="coast/couch4.png" alt="Couch 4"></span></span>
+            </button>
+            <button class="flip-card" type="button" aria-label="Experience 1 image">
+                <span class="flip-card-inner"><span class="flip-face"><img src="coast/experience1.png" alt="Experience 1"></span></span>
+            </button>
+        </section>
+        <nav class="deck-controls" aria-label="Deck controls">
+            <button class="deck-control" id="previous-card" type="button" aria-label="Previous image">&larr;</button>
+            <span id="deck-position" aria-live="polite">1 / 5</span>
+            <button class="deck-control" id="next-card" type="button" aria-label="Next image">&rarr;</button>
+        </nav>
+        </div>
+    </main>
+    <script>
+        const cards = [...document.querySelectorAll('.flip-card')];
+        const position = document.querySelector('#deck-position');
+        let currentIndex = 0;
+
+        function showCard(index) {
+            currentIndex = (index + cards.length) % cards.length;
+            cards.forEach((card, cardIndex) => {
+                const offset = (cardIndex - currentIndex + cards.length) % cards.length;
+                card.classList.toggle('is-current', offset === 0);
+                card.classList.toggle('is-next', offset === 1);
+                card.classList.toggle('is-after-next', offset === 2);
+            });
+            position.textContent = `${currentIndex + 1} / ${cards.length}`;
+        }
+
+        document.querySelector('#previous-card').addEventListener('click', () => showCard(currentIndex - 1));
+        document.querySelector('#next-card').addEventListener('click', () => showCard(currentIndex + 1));
+    </script>
+</body>
+</html>
