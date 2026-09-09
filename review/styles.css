@@ -1,0 +1,89 @@
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+
+
+}
+
+.page-container {
+    position: relative;
+    width: 75%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.TOC-container {
+    position: relative;
+    line-height: 2.5;
+    margin-top: 2%;
+    margin-left: 35%;
+    margin-right: 35%;
+    font-size: 1.1rem;
+    background-color: rgba(240, 239, 237, 0.1);
+    border-radius: 10px;
+    border: rgba(rgb(128, 128, 128), 0.3) 2px solid;
+    padding: 20px;
+
+}
+
+
+
+.review-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    /* max-width: 100%; */
+    transform: scale(1.5);
+    position: relative;
+    z-index: -10;
+    border-radius: 10px;
+    border: grey 2px solid;
+}
+
+body {
+    color: white;
+    background: linear-gradient(180deg, #000010 0%, #000033 30%, #002244 60%, #001122 80%, #000000 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: segoe UI, sans-serif;
+    
+
+}
+
+a:link {
+    color: white;
+    text-decoration: none;
+}
+/* Removed extra closing brace */
+a:visited {
+    color: #72a2ee;
+    text-decoration: none;
+}
+
+a:hover {
+    color: lightgray;
+    text-decoration: underline;
+}
+
+a:active {
+    color: white;
+    text-decoration: none;
+}
+
+
+.text-tray {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 215, 0, 0.4);
+    width: fit-content;
+    border-radius: 10px;
+    position: relative;
+    z-index: 20;
+    justify-self: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    font-size: 1.1rem;
+}
