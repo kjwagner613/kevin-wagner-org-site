@@ -1,6 +1,7 @@
 h1 {
     text-align: center;
     font-size: 2.5rem;
+    margin-top: 60px;
 
 
 }
@@ -33,7 +34,7 @@ h1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
+    margin-top: 85px;
     /* max-width: 100%; */
     transform: scale(1.5);
     position: relative;
@@ -77,7 +78,9 @@ a:active {
 .text-tray {
     margin: 20px;
     padding: 20px;
-    background-color: rgba(255, 215, 0, 0.4);
+    /* background-color: rgba(54, 168, 134, 0.4); */
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
     width: fit-content;
     border-radius: 10px;
     position: relative;
@@ -86,4 +89,73 @@ a:active {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     font-size: 1.1rem;
+}
+
+.text-tray-content {
+    width: 100%;
+    background-color: rgba(151, 138, 78, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 485;
+}
+
+.text-tray-title {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(199, 191, 154, 0.2);
+    color: white;
+    width: fit-content;
+    border-radius: 10px;
+    position: relative;
+    z-index: 20;
+    justify-self: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    font-size: 1.8rem;
+}
+
+.service-catalog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.service-category {
+    margin: 10px 0;
+    width: 80%;
+    font-size: 1.2rem;
+}
+
+.service-items {
+    list-style-type: disc;
+    padding-left: 20px;
+     font-size: 1.1rem;
+}
+
+.printer {
+    display: block;
+    margin-left: auto;
+    margin-right: 15vw;
+    /* margin-top: 20px; */
+    max-width: 100px;
+    border-radius: 10px;
+    border: grey 2px solid;
+    position: relative;
+    z-index: 20;
+}
+
+.router {
+    display: block;
+    margin-left: auto;
+    margin-right: 15vw;
+    /* margin-top: 20px; */
+    max-width: 100px;
+    border-radius: 10px;
+    border: grey 2px solid;
+    position: relative;
+    z-index: 20;
 }
