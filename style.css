@@ -276,6 +276,10 @@ a {
   grid-column: 1 / -1;
 }
 
+.card-grid > .card:nth-child(-n + 3) {
+  grid-column: 1 / -1;
+}
+
 .card p,
 .card li {
   color: #2b3e4d;
@@ -296,6 +300,7 @@ a {
 
 .card p {
   margin: 0;
+  margin-top: 10px;
   line-height: 1.55;
 }
 
