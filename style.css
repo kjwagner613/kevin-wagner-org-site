@@ -269,10 +269,31 @@ a {
   border-radius: 8px;
   padding: clamp(1rem, 2vw, 1.3rem);
   background: var(--silver-tray);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow)
 }
 
+.card-gold {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: clamp(1rem, 2vw, 1.3rem);
+  background:
+    linear-gradient(rgba(210, 175, 75, 0.12), rgba(210, 175, 75, 0.12)),
+    var(--silver-tray);
+  box-shadow: var(--shadow);
+}
 .card-grid > .card:last-child {
+  grid-column: 1 / -1;
+}
+
+.card-grid > .card.card-contact,
+.card-grid > .card.card-current,
+.card-grid > .card.card-reel,
+.card-grid > .card.card-protected {
+  grid-column: auto;
+}
+
+.card-grid > .card.card-sovereign,
+.card-grid > .card.card-protected {
   grid-column: 1 / -1;
 }
 
@@ -282,7 +303,7 @@ a {
 
 .card p,
 .card li {
-  color: #2b3e4d;
+  color: #3385c4;
   font-size: clamp(1.02rem, 1.22vw, 1.14rem);
   line-height: 1.62;
 }
@@ -650,4 +671,17 @@ a {
 
 .card a:not(.card-link):hover {
   color: #0d3f37;
+}
+
+.indent {
+  margin-left: 20px;
+}
+
+.card p.indent {
+  margin-left: 20px;
+}
+
+.card p.quote{
+  font-style: italic;
+  font-size: 1.25rem;
 }
