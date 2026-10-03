@@ -50,9 +50,15 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: var(--text);
   text-shadow: none;
-  background:
+   background:
+    radial-gradient(circle at 20% 20%, #09092f 0%, #0e0e16 70%),
+    linear-gradient(75deg, #1F3A3A 20%, #0C0C0D 90%);
+  /* background:
+    radial-gradient(circle at 20% 20%, #0C0C0D 0%, #141416 70%),
+    linear-gradient(75deg, #1F3A3A 20%, #0C0C0D 90%); */
+  /* background:
     radial-gradient(circle at 15% 15%, #0A2342 0%, #1D4E89 65%),
-    linear-gradient(60deg, #3A8D7D 30%, #0A2342 90%);
+    linear-gradient(60deg, #3A8D7D 30%, #0A2342 90%); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -107,7 +113,7 @@ body {
   max-width: 60ch;
 }
 
-.credibility-line {
+.hero-copy .credibility-line {
   margin: 0 0 0.9rem;
   color: #d3e6f6;
   font-size: clamp(0.9rem, 1.35vw, 1rem);
@@ -684,4 +690,25 @@ a {
 .card p.quote{
   font-style: italic;
   font-size: 1.25rem;
+}
+
+.doctrine {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  margin-top: 1.5rem;
+  padding: 1.2rem 0;
+  border-top: 2px solid rgba(255,255,255,0.15);
+  border-bottom: 2px solid rgba(255,255,255,0.15);
+}
+#doctrine-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 0.6rem;
+  
 }
