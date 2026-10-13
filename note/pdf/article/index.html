@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Valiant CEO Article</title>
+  <title>PDF Custom Viewer</title>
   <style>
     :root {
       --bg: #efe7d6;
@@ -340,8 +340,8 @@
           <img src="../../../public/DD-Badge-Favicon.ico" alt="" />
         </span>
         <span class="brand-text">
-          <strong>Valiant CEO</strong>
-          <em>Article Viewer</em>
+          <strong>PDF Custom Viewer</strong>
+          <em>Discrete Development</em>
         </span>
       </div>
       <button class="btn" id="prev" type="button" aria-label="Previous page">Prev</button>
@@ -355,8 +355,8 @@
           Go to
           <input id="page-jump" type="number" min="1" step="1" inputmode="numeric" aria-label="Go to page" />
         </label>
-        <a class="btn primary" href="communityPost.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        <a class="btn" href="communityPost.pdf" download>Download</a>
+        <a class="btn primary" href="template.pdf" target="_blank" rel="noopener">Open Full PDF</a>
+        <a class="btn" href="template.pdf" download>Download</a>
       </div>
       <div class="meta">
         Page <span id="page-num">1</span> / <span id="page-count">--</span>
@@ -381,7 +381,7 @@
   <script src="assets/pdfjs/pdf.min.js?v=20260730"></script>
   <script>
     (function () {
-      var pdfPath = "communityPost.pdf";
+      var pdfPath = "template.pdf";
       var storageKey = "dd_article_pdf_view_state_v1";
       var state = {
         pdfDoc: null,
