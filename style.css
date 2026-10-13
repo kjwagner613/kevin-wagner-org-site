@@ -318,7 +318,8 @@ a {
 }
 
 .card-grid>.card.card-sovereign,
-.card-grid>.card.card-protected {
+.card-grid>.card.card-protected,
+.card-grid>.card.card-essays {
   grid-column: 1 / -1;
 }
 
